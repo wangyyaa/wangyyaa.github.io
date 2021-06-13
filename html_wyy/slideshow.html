@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wangyyaa.github.io","root":"/","scheme":"Muse","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="* {box-sizing: border-box}          img {vertical-align: middle}      &#x2F;* Container *&#x2F;     .overall-container {        position: relative;        &#x2F;* Disable selection *&#x2F;        user-select: none;">
+<meta name="keywords" content="NLP">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wangyaya‘s Blog">
+<meta property="og:url" content="https:&#x2F;&#x2F;wangyyaa.github.io&#x2F;html_wyy&#x2F;slideshow.html">
+<meta property="og:site_name" content="Wangyaya‘s Blog">
+<meta property="og:description" content="* {box-sizing: border-box}          img {vertical-align: middle}      &#x2F;* Container *&#x2F;     .overall-container {        position: relative;        &#x2F;* Disable selection *&#x2F;        user-select: none;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https:&#x2F;&#x2F;wangyyaa.github.io&#x2F;html_wyy&#x2F;slideshow.htm&#x2F;Image_0_small.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;wangyyaa.github.io&#x2F;html_wyy&#x2F;slideshow.htm&#x2F;play_big_gray.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;wangyyaa.github.io&#x2F;html_wyy&#x2F;slideshow.htm&#x2F;pause_big_gray.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;wangyyaa.github.io&#x2F;html_wyy&#x2F;slideshow.htm&#x2F;view_fullscreen.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;wangyyaa.github.io&#x2F;html_wyy&#x2F;slideshow.htm&#x2F;exit_fullscreen.png">
+<meta property="og:updated_time" content="2021-06-13T12:17:36.303Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;wangyyaa.github.io&#x2F;html_wyy&#x2F;slideshow.htm&#x2F;Image_0_small.png">
+
+<link rel="canonical" href="https://wangyyaa.github.io/html_wyy/slideshow">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title> | Wangyaya‘s Blog
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Wangyaya‘s Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">心有猛虎 细嗅蔷薇</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page">
+            
+
+  <div class="posts-expand">
+    
+    
+    
+    <div class="post-block" lang="zh-Hans">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<style> * {box-sizing: border-box}
+    
+    img {vertical-align: middle}
+
+    /* Container */
+    .overall-container {
+       position: relative;
+       /* Disable selection */
+       user-select: none;
+       margin: auto;
+    }
+
+    /* Keep aspect ratio of image during fullscreen */
+    .overall-container:-webkit-full-screen #slide-image {
+       margin: auto;
+       display: block;
+       width: 100vw !important;
+       height: auto;
+    }
+
+    .overall-container:fullscreen #slide-image {
+       margin: auto;
+       display: block;
+       width: 100vw !important;
+       height: auto;
+    }
+
+    /* Slideshow */
+    .slideshow-main {
+       /* Black background for slideshow */
+       background-color: #000;
+    }
+
+    /* Set opacity for play controls when hovering slideshow */
+    .slideshow-main:hover .play-controls {
+       opacity: 0.6;
+    }
+
+    /* Set opacity for play controls when hovering play button */
+    .slideshow-main .play-controls:hover {
+       opacity: 1;
+    }
+
+    /* Set opacity for fullscreen controls when hovering slideshow */
+    .slideshow-main:hover .fullscreen-controls {
+       opacity: 0.6;
+    }
+
+    /* Set opacity for fullscreen controls when hovering fullscreen button */
+    .slideshow-main .fullscreen-controls:hover {
+       opacity: 1;
+    }
+
+    /* Next & previous buttons */
+    .prev, .next {
+       position: absolute;
+       width: auto;
+       top: 50%;
+       padding: 16px;
+       margin-top: -50px;
+       color: white;
+       font-weight: bold;
+       font-size: 20px;
+       transition: opacity 0.6s linear;
+       opacity: 0;
+       border-radius: 0 10px 10px 0;
+       /* Pointer cursor when hovering previous and next buttons */
+       cursor: pointer;
+    }
+
+    /* Set opacity for prev button when hovering slideshow */
+    .slideshow-main:hover .prev {
+       opacity: 0.6;
+    }
+
+    /* Set opacity when hovering prev button */
+    .slideshow-main .prev:hover {
+       opacity: 1;
+    }
+
+    /* Set opacity for next button when hovering slideshow */
+    .slideshow-main:hover .next {
+       opacity: 0.6;
+    }
+
+    /* Set opacity when hovering next button */
+    .slideshow-main .next:hover {
+       opacity: 1;
+    }
+
+    /* Position the "prev button" to the left */
+    .prev {
+       left: 0;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+       right: 0;
+       border-radius: 10px 0 0 10px;
+    }
+
+    /* On hover, add a translucent gray background color */
+    .prev:hover, .next:hover {
+       background-color: rgba(96, 96, 96, 0.8);
+    }
+
+    /* Play button */
+    .play-controls {
+       position: absolute;
+       width: 60px;
+       height: 60px;
+       top: 50%;
+       /* Center the play button */
+       left: 50%;
+       margin: -50px 0px 0px -30px;
+       padding: 7px;
+       border: 5px solid #606060;
+       border-radius: 50%;
+       transition: opacity 0.6s linear;
+       opacity: 0;
+       background-color: #b6b6b6;
+       cursor: pointer;
+    }
+
+    #play {
+       width: 40px;
+       height: 40px;
+       display: block;
+    }
+
+    #pause {
+       width: 40px;
+       height: 40px;
+       display: none;
+    }
+
+    /* Fullscreen button */
+    .fullscreen-controls {
+       position: absolute;
+       width: 35px;
+       height: 34px;
+       /* Fullscreen button is placed on bottom-right */
+       bottom: 11px;
+       right: 11px;
+       margin: -24px 0px 0px -24px;
+       padding: 3px;
+       border-style: solid;
+       border-color: #606060;
+       border-radius: 50%;
+       transition: opacity 0.6s linear;
+       opacity: 0;
+       background-color: #b6b6b6;
+       cursor: pointer;
+       z-index: 1;
+    }
+
+    #view-fullscreen {
+       margin: -1px 0px 0px -1px;
+       width: 26px;
+       height: 26px;
+       display: block;
+    }
+
+    #exit-fullscreen {
+       margin: -1px 0px 0px -1px;
+       width: 26px;
+       height: 26px;
+       display: none;
+    }
+
+    /* NCH Watermark */
+    .wm-free {
+       position: absolute;
+       width: 100%;
+       bottom: 0px;
+       text-align: center;
+       padding: 4px 4px 10px 10px;
+       border-radius: 2px;
+       font-family: Arial, sans-serif;
+       color: white;
+       transition: opacity 0.6s linear;
+       opacity: 0.5;
+    }
+
+    /* The selectors for nagivating through slides*/
+    .sequence-controls {
+       width: 100%;
+       position: absolute;
+       margin: auto;
+       left: 0px;
+       bottom: -40px;
+       transition: 0.8s;
+    }
+
+    .slide-selector {
+       height: 15px;
+       width: 15px;
+       margin: 0 2px;
+       background-color: #afafaf;
+       border-radius: 4px;
+       display: inline-block;
+       transition: background-color 0.6s ease, opacity 0.6s linear;
+       cursor: pointer;
+    }
+
+    .active, .slide-selector:hover {
+       background-color: #404040;
+    }
+
+    /* Cross fade animation: 2 seconds */
+    .make-invisible {
+       -webkit-animation-name: fade-invisible;
+       -webkit-animation-duration: 2s;
+       -webkit-animation-timing-function: linear;
+       animation-name: fade-invisible;
+       animation-duration: 2s;
+       animation-timing-function: linear;
+    }
+
+    @-webkit-keyframes fade-invisible {
+       from {opacity: 1}
+       to {opacity: 0}
+    }
+
+    @keyframes fade-invisible {
+       from {opacity: 1}
+       to {opacity: 0}
+    }
+
+    /* Cross fade animation: 2 seconds */
+    .make-visible {
+       -webkit-animation-name: fade-visible;
+       -webkit-animation-duration: 2s;
+       -webkit-animation-timing-function: linear;
+       animation-name: fade-visible;
+       animation-duration: 2s;
+       animation-timing-function: linear;
+    }
+
+    @-webkit-keyframes fade-visible {
+       from {opacity: 0}
+       to {opacity: 1}
+    }
+
+    @keyframes fade-visible {
+       from {opacity: 0}
+       to {opacity: 1}
+    }
+
+  </style>
+<script> var iSlideIndex = 1;
+    var iOldIndex = 0;
+    var iPlaybackTimerId = 0;
+    var iStopAnimateTimerId = 0;
+    var iImageLoadingTimerId = 0;
+    var iSlideshowMouseMoveTimerId = 0;
+    var bLoaded = false;
+    var bPlay = false;
+    var bFullscreen = false;
+    var bLoop = true;
+    var bImageLoaded = true;
+    var iHoveredElem = 0;
+
+    var images = ["html/Image_0.png", "html/Image_1.png", "html/Image_2.png", "html/Image_3.png", "html/Image_4.png", "html/Image_5.png", "html/Image_6.png", "html/Image_7.png", "html/Image_8.png", "html/Image_9.png", "html/Image_10.png", "html/Image_11.png", "html/Image_12.png", "html/Image_13.png", "html/Image_14.png", "html/Image_15.png", "html/Image_16.png", "html/Image_17.png", "html/Image_18.png", "html/Image_19.png", "html/Image_20.png", "html/Image_21.png", "html/Image_22.png", "html/Image_23.png", "html/Image_24.png", "html/Image_25.png", "html/Image_26.png", "html/Image_27.png", "html/Image_28.png", "html/Image_29.png", "html/Image_30.png", "html/Image_31.png", "html/Image_32.png", "html/Image_33.png", "html/Image_34.png", "html/Image_35.png", "html/Image_36.png", "html/Image_37.png", "html/Image_38.png", "html/Image_39.png", "html/Image_40.png", "html/Image_41.png", "html/Image_42.png", "html/Image_43.png", "html/Image_44.png", "html/Image_45.png", "html/Image_46.png", "html/Image_47.png", "html/Image_48.png", "html/Image_49.png", "html/Image_50.png"];
+    var slideDurations = [5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000];
+    var transitionDurations = [2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 0];
+
+    // Exit fullscreen by Esc key
+    if (document.addEventListener) {
+       document.addEventListener('fullscreenchange', exitFullscreen);
+       document.addEventListener('webkitfullscreenchange', exitFullscreen);
+       document.addEventListener('mozfullscreenchange', exitFullscreen);
+       document.addEventListener('MSFullscreenChange', exitFullscreen);
+    }
+
+    function exitFullscreen() {
+       if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
+          if (bFullscreen) ToggleFullscreen();
+       }
+    }
+
+    function LoadFirstSlideHiRes() {
+       var img = new Image();
+       img.onload = function () {
+          var first_slide = document.getElementsByClassName("slide")[0];
+          var first_image = first_slide.getElementsByTagName("IMG")[0];
+          first_image.src = images[0];
+       }
+       img.src = images[0];
+    }
+
+    function LoadNthImage(callback, old_n) {
+       var slides = document.getElementsByClassName("slide");
+       if (iSlideIndex > slides.length) {
+          if (bLoop) {
+             iSlideIndex = 1;
+          } else {
+             iSlideIndex -= 1;
+             return;
+          }
+       }
+       if (iSlideIndex < 1) {
+          if (bLoop) iSlideIndex = slides.length;
+          else {
+             iSlideIndex += 1;
+             return;
+          }
+       }
+
+       var first_slide = document.getElementsByClassName("slide")[iSlideIndex-1];
+       var first_image = first_slide.getElementsByTagName("IMG")[0];
+       if (first_image.src != "") {
+          callback(old_n, iSlideIndex, true);
+          return;
+       }
+
+       bImageLoaded = false;
+       var img = new Image();
+       img.onload = function () {
+          callback(old_n, iSlideIndex, true);
+       }
+       img.src = images[iSlideIndex-1];
+    }
+
+    function PrevSlide() {
+       if (!bImageLoaded) return;
+       CancelCurrentAnimation();
+       if (iImageLoadingTimerId != 0) {
+          clearTimeout(iImageLoadingTimerId);
+          iImageLoadingTimerId = 0;
+       }
+       if (bPlay && (iPlaybackTimerId != 0)) {
+          clearTimeout(iPlaybackTimerId);
+          iPlaybackTimerId = 0;
+       }
+       var old_n = iSlideIndex;
+       iSlideIndex -= 1;
+       LoadNthImage(ShowSlide, old_n);
+       ShowSlide(old_n, iSlideIndex, false);
+    }
+
+    function NextSlide() {
+       if (!bImageLoaded) return;
+       CancelCurrentAnimation();
+       if (iImageLoadingTimerId != 0) {
+          clearTimeout(iImageLoadingTimerId);
+          iImageLoadingTimerId = 0;
+       }
+       if (bPlay && (iPlaybackTimerId != 0)) {
+          clearTimeout(iPlaybackTimerId);
+          iPlaybackTimerId = 0;
+       }
+       var old_n = iSlideIndex;
+       iSlideIndex += 1;
+       LoadNthImage(ShowSlide, old_n);
+       ShowSlide(old_n, iSlideIndex, false);
+    }
+
+    function MoveSlide(n) {
+       if (!bImageLoaded) return;
+       CancelCurrentAnimation();
+       if (iImageLoadingTimerId != 0) {
+          clearTimeout(iImageLoadingTimerId);
+          iImageLoadingTimerId = 0;
+       }
+       if (bPlay && (iPlaybackTimerId != 0)) {
+          clearTimeout(iPlaybackTimerId);
+          iPlaybackTimerId = 0;
+       }
+       var old_n = iSlideIndex;
+       iSlideIndex = n;
+       LoadNthImage(ShowSlide, old_n);
+       ShowSlide(old_n, iSlideIndex, false);
+    }
+
+    function StartAnimate(old_n, duration) {
+       var durationSeconds = duration / 1000;
+       var slides = document.getElementsByClassName("slide");
+       slides[old_n-1].className += " make-invisible";
+       slides[old_n-1].style.animationDuration = durationSeconds + "s";
+       slides[old_n-1].style.webkitAnimationDuration  = durationSeconds + "s";
+       slides[iSlideIndex-1].className += " make-visible";
+       slides[iSlideIndex-1].style.animationDuration = durationSeconds + "s";
+       slides[iSlideIndex-1].style.webkitAnimationDuration  = durationSeconds + "s";
+    }
+
+    function CancelCurrentAnimation(decrease = true) {
+       if (bPlay && (iPlaybackTimerId != 0)) {
+          if (decrease) {
+             iSlideIndex -= 1;
+             if (iSlideIndex < 1) {
+                if (bLoop) {
+                   var slides = document.getElementsByClassName("slide");
+                   iSlideIndex = slides.length;
+                } else {
+                   iSlideIndex += 1;
+                }
+             }
+          }
+       }
+
+       var iIndexToRemove = iSlideIndex;
+       if (!decrease) {
+          iIndexToRemove -= 1;
+          if (iIndexToRemove < 1) {
+             if (bLoop) {
+                var slides = document.getElementsByClassName("slide");
+                iIndexToRemove = slides.length;
+             } else {
+                iIndexToRemove += 1;
+             }
+          }
+       }
+
+       if (iStopAnimateTimerId != 0) {
+          clearTimeout(iStopAnimateTimerId);
+          RemoveAnimate(iOldIndex, iIndexToRemove);
+       }
+    }
+
+    function RemoveAnimate(old_n, n) {
+       iStopAnimateTimerId = 0;
+       iOldIndex = 0;
+       var slides = document.getElementsByClassName("slide");
+       slides[old_n-1].className = slides[old_n-1].className.replace(" make-invisible", "");
+       slides[n-1].className = slides[n-1].className.replace(" make-visible", "");
+       slides[old_n-1].style.display = "none";
+       var slide_style = slides[n-1].style;
+       if (!bFullscreen) {
+          slide_style.removeProperty("top");
+          slide_style.removeProperty("left");
+          slide_style.removeProperty("transform");
+          slide_style.removeProperty("position");
+       }
+    }
+
+    function ShowCrossFadingSlides(old_n) {
+       var i;
+       var slides = document.getElementsByClassName("slide");
+       for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+       }
+
+       slides[old_n-1].style.display = "block";
+       slides[iSlideIndex-1].style.display = "block";
+       if (bFullscreen) {
+          slides[iSlideIndex-1].style.top = "50%";
+          slides[iSlideIndex-1].style.left = "50%";
+          slides[iSlideIndex-1].style.transform = "translate(-50%, -50%)";
+       } else {
+          slides[iSlideIndex-1].style.left = "0px";
+          slides[iSlideIndex-1].style.top = "0px";
+          slides[iSlideIndex-1].style.removeProperty("transform");
+
+          var visible = document.getElementsByClassName("make-visible")[0];
+          visible.style.width = "100%";
+          visible.style.height = "auto";
+       }
+
+       slides[iSlideIndex-1].style.margin = "auto";
+       slides[iSlideIndex-1].style.position = "absolute";
+
+       var selectors = document.getElementsByClassName("slide-selector");
+       for (i = 0; i < selectors.length; i++) {
+          selectors[i].className = selectors[i].className.replace(" active", "");
+       }
+       selectors[iSlideIndex-1].className += " active";
+    }
+
+    function ShowSlide(old_n, n, from_callback) {
+       if (from_callback) {
+          var first_slide = document.getElementsByClassName("slide")[n-1];
+          var first_image = first_slide.getElementsByTagName("IMG")[0];
+          first_image.src = images[n-1];
+          bImageLoaded = true;
+          return;
+       } else {
+          iImageLoadingTimerId = 0;
+       }
+
+       if (!bImageLoaded) {
+          iImageLoadingTimerId = setTimeout(ShowSlide, 200, old_n, n, false);
+          return;
+       }
+
+       var bStartTimeout = true;
+       var slides = document.getElementsByClassName("slide");
+       if (old_n != n) {
+          if (n > slides.length) {
+             if (bLoop) {
+                iSlideIndex = 1;
+             } else {
+                StopPlayback();
+                iSlideIndex -= 1;
+                bStartTimeout = false;
+                return;
+             }
+          }
+          if (n < 1) {
+             if (bLoop) iSlideIndex = slides.length;
+             else {
+                iSlideIndex += 1;
+                return;
+             }
+          }
+
+          if (bLoaded) {
+             var transitionDuration = transitionDurations[old_n-1];
+             StartAnimate(old_n, transitionDuration);
+             ShowCrossFadingSlides(old_n);
+             iOldIndex = old_n;
+             iStopAnimateTimerId = setTimeout(RemoveAnimate, transitionDuration, old_n, iSlideIndex);
+          } else {
+             var selectors = document.getElementsByClassName("slide-selector");
+             selectors[iSlideIndex-1].className += " active";
+             bLoaded = true;
+          }
+       } else if ((!bLoop) && (iSlideIndex == slides.length)) {
+          StopPlayback();
+          bStartTimeout = false;
+          return;
+       }
+
+       if (bPlay && (iPlaybackTimerId != 0)) {
+          clearTimeout(iPlaybackTimerId);
+          iPlaybackTimerId = 0;
+       }
+
+       if (bPlay && bStartTimeout) {
+          var old_index = iSlideIndex;
+          iSlideIndex += 1;
+          LoadNthImage(ShowSlide, old_index);
+          var timeout = (((old_n != n) ? (transitionDurations[old_n-1] / 2) : 0) + slideDurations[n-1]) - (transitionDurations[n-1] / 2);
+          iPlaybackTimerId = setTimeout(ShowSlide, timeout, old_index, iSlideIndex, false);
+       }
+    }
+
+    function StopPlayback() {
+       var play = document.getElementById("play");
+       var pause = document.getElementById("pause");
+
+       play.style.display = "block";
+       pause.style.display = "none";
+
+       if (iPlaybackTimerId != 0) {
+          clearTimeout(iPlaybackTimerId);
+          iPlaybackTimerId = 0;
+       }
+       bPlay = false;
+    }
+
+    function TogglePlay() {
+       var slides = document.getElementsByClassName("slide");
+       if ((iSlideIndex >= slides.length) && (!bLoop)) return;
+
+       bPlay = !bPlay;
+       var play = document.getElementById("play");
+       var pause = document.getElementById("pause");
+
+       if (bPlay) {
+          play.style.display = "none";
+          pause.style.display = "block";
+       } else {
+          play.style.display = "block";
+          pause.style.display = "none";
+       }
+
+       PlaySlideshow();
+    }
+
+    function ShowFullscreen(bShowFullscreen) {
+       if (bShowFullscreen) {
+          var overall_container = document.getElementsByClassName("overall-container")[0];
+          if (overall_container.requestFullscreen) {
+             overall_container.requestFullscreen();
+          } else if (overall_container.mozRequestFullScreen) {
+             overall_container.mozRequestFullScreen();
+          } else if (overall_container.webkitRequestFullscreen) {
+             overall_container.webkitRequestFullscreen();
+          } else if (overall_container.msRequestFullscreen) {
+             overall_container.msRequestFullscreen();
+          }
+       } else {
+          if (document.exitFullscreen) {
+             document.exitFullscreen();
+          } else if (document.mozCancelFullScreen) {
+             document.mozCancelFullScreen();
+          } else if (document.webkitExitFullscreen) {
+             document.webkitExitFullscreen();
+          } else if (document.msExitFullscreen) {
+             document.msExitFullscreen();
+          }
+       }
+    }
+
+    function ToggleFullscreen() {
+       bFullscreen = !bFullscreen;
+       var fullscreen_controls = document.getElementsByClassName("fullscreen-controls")[0];
+       var view_fullscreen = document.getElementById("view-fullscreen");
+       var exit_fullscreen = document.getElementById("exit-fullscreen");
+       var sequence_controls = document.getElementsByClassName("sequence-controls")[0];
+       var selectors = document.getElementsByClassName("slide-selector");
+       var watermark = document.getElementsByClassName("wm-free")[0];
+       var slides = document.getElementsByClassName("slide");
+       var i;
+
+       CancelCurrentAnimation(false);
+
+       if (bFullscreen) {
+          for (i = 0; i < slides.length; i++) {
+             slides[i].style.top = "50%";
+             slides[i].style.left = "50%";
+             slides[i].style.transform = "translate(-50%, -50%)";
+             slides[i].style.position = "absolute";
+          }
+
+          fullscreen_controls.style.bottom = "8px";
+          view_fullscreen.style.display = "none";
+          exit_fullscreen.style.display = "block";
+          sequence_controls.style.bottom = "8px";
+          for (i = 0; i < selectors.length; i++) {
+             selectors[i].style.opacity = "0.6";
+          }
+          watermark.style.bottom = "25px";
+       } else {
+          for (i = 0; i < slides.length; i++) {
+             slides[i].style.removeProperty("top");
+             slides[i].style.removeProperty("left");
+             slides[i].style.removeProperty("transform");
+             slides[i].style.removeProperty("position");
+          }
+
+          fullscreen_controls.style.bottom = "11px";
+          view_fullscreen.style.display = "block";
+          exit_fullscreen.style.display = "none";
+          sequence_controls.style.bottom = "-40px";
+          for (i = 0; i < selectors.length; i++) {
+             selectors[i].style.opacity = "1";
+          }
+          watermark.style.bottom = "0px";
+       }
+
+       ShowFullscreen(bFullscreen);
+    }
+
+    function PlaySlideshow() {
+       if (iPlaybackTimerId != 0) {
+          clearTimeout(iPlaybackTimerId);
+          iPlaybackTimerId = 0;
+          iSlideIndex -= 1;
+       } else {
+          ShowSlide(iSlideIndex, iSlideIndex, false);
+       }
+    }
+
+    function MouseOverElem(hoveredElem) {
+       clearTimeout(iSlideshowMouseMoveTimerId);
+       iSlideshowMouseMoveTimerId = 0;
+       iHoveredElem = hoveredElem;
+
+       switch (iHoveredElem) {
+          case 1:
+             var play_controls = document.getElementsByClassName("play-controls")[0];
+             play_controls.style.opacity = "1";
+             break;
+          case 2:
+             var prev_button = document.getElementsByClassName("prev")[0];
+             prev_button.style.opacity = "1";
+             break;
+          case 3:
+             var next_button = document.getElementsByClassName("next")[0];
+             next_button.style.opacity = "1";
+             break;
+          case 4:
+             var fullscreen_controls = document.getElementsByClassName("fullscreen-controls")[0];
+             fullscreen_controls.style.opacity = "1";
+             break;
+          case 5:
+             if (bFullscreen) {
+                var selectors = document.getElementsByClassName("slide-selector");
+                var i;
+                for (i = 0; i < selectors.length; i++) {
+                   selectors[i].style.opacity = "1";
+                }
+             }
+             break;
+       }
+    }
+
+    function MouseOutElem() {
+       if ((iHoveredElem == 5) && bFullscreen) {
+          var selectors = document.getElementsByClassName("slide-selector");
+          var i;
+          for (i = 0; i < selectors.length; i++) {
+             selectors[i].style.opacity = "0.6";
+          }
+       }
+
+       iSlideshowMouseMoveTimerId = setTimeout(ShowControls, 1000, false);
+       iHoveredElem = 0;
+    }
+
+    function ShowControls(bShowControls) {
+       var play_controls = document.getElementsByClassName("play-controls")[0];
+       var prev_button = document.getElementsByClassName("prev")[0];
+       var next_button = document.getElementsByClassName("next")[0];
+       var fullscreen_controls = document.getElementsByClassName("fullscreen-controls")[0];
+       var selectors = document.getElementsByClassName("slide-selector");
+       var i;
+
+       if (bShowControls) {
+          play_controls.style.opacity = "0.6";
+          prev_button.style.opacity = "0.6";
+          next_button.style.opacity = "0.6";
+          fullscreen_controls.style.opacity = "0.6";
+          if (bFullscreen) {
+             for (i = 0; i < selectors.length; i++) {
+                selectors[i].style.opacity = "0.6";
+             }
+          }
+       } else {
+          play_controls.style.opacity = "0";
+          prev_button.style.opacity = "0";
+          next_button.style.opacity = "0";
+          fullscreen_controls.style.opacity = "0";
+          if (bFullscreen) {
+             for (i = 0; i < selectors.length; i++) {
+                selectors[i].style.opacity = "0";
+             }
+          }
+       }
+
+       iSlideshowMouseMoveTimerId = 0;
+    }
+
+    function SlideshowMouseMove() {
+       clearTimeout(iSlideshowMouseMoveTimerId);
+       if (iHoveredElem == 0) {
+          ShowControls(true);
+          iSlideshowMouseMoveTimerId = setTimeout(ShowControls, 1000, false);
+       }
+    }
+
+  </script>
+</head>
+
+<body onload="ShowSlide(1); LoadFirstSlideHiRes(); TogglePlay()">
+<!--The parent div of overall-container should have its dimensions (width, height) set-->
+<div class="overall-container">
+<div class="slideshow-main" onmousemove="SlideshowMouseMove()">
+<div class="slide" style="display:block">
+   <img id="slide-image" src="/html_wyy/slideshow.htm/Image_0_small.png" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+<div class="slide" style="display:none">
+   <img id="slide-image" style="width:100%">
+</div>
+
+
+<a class="prev" onclick="PrevSlide()" onmouseover="MouseOverElem(2)" onmouseout="MouseOutElem()">&#10094;</a>
+
+<a class="next" onclick="NextSlide()" onmouseover="MouseOverElem(3)" onmouseout="MouseOutElem()">&#10095;</a>
+
+<div class="play-container" style="visibility:hidden">
+   <div class="play-controls" onclick="TogglePlay()" onmouseover="MouseOverElem(1)" onmouseout="MouseOutElem()">
+      <img id="play" src="/html_wyy/slideshow.htm/play_big_gray.png">
+      <img id="pause" src="/html_wyy/slideshow.htm/pause_big_gray.png">
+   </div>
+</div>
+
+<div class="fullscreen-container">
+   <div class="fullscreen-controls" onclick="ToggleFullscreen()" onmouseover="MouseOverElem(4)" onmouseout="MouseOutElem()">
+      <img id="view-fullscreen" src="/html_wyy/slideshow.htm/view_fullscreen.png">
+      <img id="exit-fullscreen" src="/html_wyy/slideshow.htm/exit_fullscreen.png">
+   </div>
+</div>
+
+<div class="wm-free">
+   <div style="font-size:18px">Created with PhotoStage � NCH Software.</div>
+</div>
+
+</div> <!-- slideshow-main -->
+<div class="sequence-controls" onmouseover="MouseOverElem(5)" onmouseout="MouseOutElem()">
+<br>
+
+<div style="text-align:center">
+   <span class="slide-selector" onclick="MoveSlide(1)"></span>
+   <span class="slide-selector" onclick="MoveSlide(2)"></span>
+   <span class="slide-selector" onclick="MoveSlide(3)"></span>
+   <span class="slide-selector" onclick="MoveSlide(4)"></span>
+   <span class="slide-selector" onclick="MoveSlide(5)"></span>
+   <span class="slide-selector" onclick="MoveSlide(6)"></span>
+   <span class="slide-selector" onclick="MoveSlide(7)"></span>
+   <span class="slide-selector" onclick="MoveSlide(8)"></span>
+   <span class="slide-selector" onclick="MoveSlide(9)"></span>
+   <span class="slide-selector" onclick="MoveSlide(10)"></span>
+   <span class="slide-selector" onclick="MoveSlide(11)"></span>
+   <span class="slide-selector" onclick="MoveSlide(12)"></span>
+   <span class="slide-selector" onclick="MoveSlide(13)"></span>
+   <span class="slide-selector" onclick="MoveSlide(14)"></span>
+   <span class="slide-selector" onclick="MoveSlide(15)"></span>
+   <span class="slide-selector" onclick="MoveSlide(16)"></span>
+   <span class="slide-selector" onclick="MoveSlide(17)"></span>
+   <span class="slide-selector" onclick="MoveSlide(18)"></span>
+   <span class="slide-selector" onclick="MoveSlide(19)"></span>
+   <span class="slide-selector" onclick="MoveSlide(20)"></span>
+   <span class="slide-selector" onclick="MoveSlide(21)"></span>
+   <span class="slide-selector" onclick="MoveSlide(22)"></span>
+   <span class="slide-selector" onclick="MoveSlide(23)"></span>
+   <span class="slide-selector" onclick="MoveSlide(24)"></span>
+   <span class="slide-selector" onclick="MoveSlide(25)"></span>
+   <span class="slide-selector" onclick="MoveSlide(26)"></span>
+   <span class="slide-selector" onclick="MoveSlide(27)"></span>
+   <span class="slide-selector" onclick="MoveSlide(28)"></span>
+   <span class="slide-selector" onclick="MoveSlide(29)"></span>
+   <span class="slide-selector" onclick="MoveSlide(30)"></span>
+   <span class="slide-selector" onclick="MoveSlide(31)"></span>
+   <span class="slide-selector" onclick="MoveSlide(32)"></span>
+   <span class="slide-selector" onclick="MoveSlide(33)"></span>
+   <span class="slide-selector" onclick="MoveSlide(34)"></span>
+   <span class="slide-selector" onclick="MoveSlide(35)"></span>
+   <span class="slide-selector" onclick="MoveSlide(36)"></span>
+   <span class="slide-selector" onclick="MoveSlide(37)"></span>
+   <span class="slide-selector" onclick="MoveSlide(38)"></span>
+   <span class="slide-selector" onclick="MoveSlide(39)"></span>
+   <span class="slide-selector" onclick="MoveSlide(40)"></span>
+   <span class="slide-selector" onclick="MoveSlide(41)"></span>
+   <span class="slide-selector" onclick="MoveSlide(42)"></span>
+   <span class="slide-selector" onclick="MoveSlide(43)"></span>
+   <span class="slide-selector" onclick="MoveSlide(44)"></span>
+   <span class="slide-selector" onclick="MoveSlide(45)"></span>
+   <span class="slide-selector" onclick="MoveSlide(46)"></span>
+   <span class="slide-selector" onclick="MoveSlide(47)"></span>
+   <span class="slide-selector" onclick="MoveSlide(48)"></span>
+   <span class="slide-selector" onclick="MoveSlide(49)"></span>
+   <span class="slide-selector" onclick="MoveSlide(50)"></span>
+   <span class="slide-selector" onclick="MoveSlide(51)"></span>
+</div>
+</div>
+</div> <!-- overall-container -->
+</body>
+</html>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Wangyaya</p>
+  <div class="site-description" itemprop="description">知识体系</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wangyaya</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
